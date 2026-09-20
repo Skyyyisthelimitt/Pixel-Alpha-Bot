@@ -329,55 +329,83 @@ function createBinanceGuideEmbeds() {
 }
 
 /**
- * Builds the Account Creation Guide Embed and Action Row
+ * Builds the Account Creation Guide Embeds (5 sequential embeds with screenshots)
  */
-function createAccountGuideEmbed() {
+function createAccountGuideEmbeds() {
   const COLOR = '#F5B81C';
   const FOOTER = 'Pixel Alpha — Automated Trading Intelligence';
 
-  const embed = new EmbedBuilder()
+  const IMAGES = {
+    step1: 'https://media.discordapp.net/attachments/1545151302579785798/1551240848065167370/image.png?ex=6ab1411e&is=6aafef9e&hm=4b6b9ac09f41d515421b458e9fe4ee188f1afca254c7f3843ab9a7f1ccc73160&=&format=webp&quality=lossless&width=640&height=328',
+    step2: 'https://media.discordapp.net/attachments/1545151302579785798/1551240916151435265/image.png?ex=6ab1412f&is=6aafefaf&hm=1e11dc62b78771d2a652e7bd9f6a361f5cc959fe9b056947d7b6e2cf3231d808&=&format=webp&quality=lossless',
+    step3: 'https://media.discordapp.net/attachments/1545151302579785798/1551240995281051699/image.png?ex=6ab14141&is=6aafefc1&hm=65d9ca54ddc25f09bbf7b7fe6420cc6b871379ee1cdd95e0f1a4b5a742f80b3d&=&format=webp&quality=lossless',
+    step4: 'https://media.discordapp.net/attachments/1545151302579785798/1551241057621245982/image.png?ex=6ab14150&is=6aafefd0&hm=293ed0423eff346be9bc6400ca55ce3b99b16626f1f463b0cfdba83386f77f6e&=&format=webp&quality=lossless&width=640&height=321'
+  };
+
+  // Embed 1: Overview & Before You Start
+  const embed1 = new EmbedBuilder()
     .setTitle('How to Create Your Pixel Alpha Account')
     .setColor(COLOR)
     .setDescription(
-      'Pixel Alpha operates on a non-custodial model. You trade on your own exchange account, keep full custody of your capital, and pay only on net profits. Setting up your account takes less than two minutes.'
-    )
-    .addFields(
-      {
-        name: 'Before You Start',
-        value:
-          '• **No payment details required**: No credit card or upfront subscription needed.\n' +
-          '• **Performance-based fee**: Free to connect. A 20% fee applies only to realized profits above your High-Water Mark ($0 on flat or losing periods).\n' +
-          '• **Non-custodial**: Connected via trade-only API keys. We never have permission to withdraw, transfer, or hold funds.',
-        inline: false
-      },
-      {
-        name: 'Step 1 · Go to the Registration Page',
-        value: 'Visit [pixel-alpha.com/auth](https://pixel-alpha.com/auth). If the form shows "Sign In", click **Create one free** at the bottom.',
-        inline: false
-      },
-      {
-        name: 'Step 2 · Fill in Your Details',
-        value:
-          '• Enter your **Name** and a valid **Email Address**.\n' +
-          '• Choose a secure **Password** and confirm it.\n' +
-          '• Check the box to accept the **Terms & Conditions**, **Privacy Policy**, and **Risk Disclaimer**.',
-        inline: false
-      },
-      {
-        name: 'Step 3 · Access Your Dashboard',
-        value:
-          'Click **Create free account**. You will be authenticated immediately and redirected to your dashboard at [pixel-alpha.com/dashboard](https://pixel-alpha.com/dashboard).',
-        inline: false
-      },
-      {
-        name: 'Next Step · Connect Your Exchange',
-        value:
-          'Once your account is ready, follow our companion guide in this channel: **How to connect your Binance account** to set up your API key and server IP allow-list.\n\n' +
-          'Need assistance? Open a ticket in <#1545070643744215212> or contact **support@pixel-alpha.com**.',
-        inline: false
-      }
+      'Pixel Alpha operates on a non-custodial model. You trade on your own exchange account, keep full custody of your capital, and pay only on net profits. Setting up your account takes less than two minutes.\n\n' +
+      '**Before you start**\n' +
+      '• **No payment details required**: No credit card, bank details, or upfront subscription needed.\n' +
+      '• **Performance-based fee**: Free to connect and run. A 20% fee applies only to realized profits above your High-Water Mark ($0 on flat or losing periods).\n' +
+      '• **Non-custodial**: Connected via trade-only API keys. We never have permission to withdraw, transfer, or hold funds.'
     )
     .setFooter({ text: FOOTER });
+
+  // Embed 2: Step 01
+  const embed2 = new EmbedBuilder()
+    .setTitle('Step 01 · Go to Website & Click "Start free"')
+    .setColor(COLOR)
+    .setDescription(
+      'Visit [pixel-alpha.com](https://pixel-alpha.com/). In the top right corner of the navigation bar, click the yellow **"Start free"** button (or click **"Sign in"**).'
+    )
+    .setImage(IMAGES.step1)
+    .setFooter({ text: 'Pixel Alpha — Step 1 of 4' });
+
+  // Embed 3: Step 02
+  const embed3 = new EmbedBuilder()
+    .setTitle('Step 02 · Fill in Details & Create Account')
+    .setColor(COLOR)
+    .setDescription(
+      'On the authentication card:\n' +
+      '• If the card shows "Sign In", click **Create one free** at the bottom.\n' +
+      '• Enter your **Name** and a valid **Email Address**.\n' +
+      '• Set a secure **Password** and confirm it.\n' +
+      '• Check the box to accept the **Terms & Conditions**, **Privacy Policy**, and **Risk Disclaimer**.\n' +
+      '• Click **Create free account**.'
+    )
+    .setImage(IMAGES.step2)
+    .setFooter({ text: 'Pixel Alpha — Step 2 of 4' });
+
+  // Embed 4: Step 03
+  const embed4 = new EmbedBuilder()
+    .setTitle('Step 03 · Arrive at Your Trading Dashboard')
+    .setColor(COLOR)
+    .setDescription(
+      'Once registered, you are instantly authenticated and redirected to your personal dashboard at [pixel-alpha.com/dashboard](https://pixel-alpha.com/dashboard).\n\n' +
+      'Click the yellow **"+ Connect an exchange"** button in the center of the screen (or the button in the top alert banner).'
+    )
+    .setImage(IMAGES.step3)
+    .setFooter({ text: 'Pixel Alpha — Step 3 of 4' });
+
+  // Embed 5: Step 04
+  const embed5 = new EmbedBuilder()
+    .setTitle('Step 04 · Select Exchange & Connect API')
+    .setColor(COLOR)
+    .setDescription(
+      'On the **"Connect an exchange"** wizard:\n' +
+      '• Select **Binance** (or **MEXC**).\n' +
+      '• Click **Continue** to proceed to the API keys step.\n\n' +
+      '━━━━━━━━━━━━━━━━━━━━\n\n' +
+      '👉 **Next Step:** Follow our companion guide in this channel: ' +
+      '**"How to connect your Binance account"** for the 5-step API key setup and IP allow-list instructions!\n\n' +
+      'Need assistance? Open a ticket in <#1545070643744215212> or contact **support@pixel-alpha.com**.'
+    )
+    .setImage(IMAGES.step4)
+    .setFooter({ text: 'Pixel Alpha — Step 4 of 4' });
 
   const row = new ActionRowBuilder().addComponents(
     new ButtonBuilder()
@@ -392,7 +420,10 @@ function createAccountGuideEmbed() {
       .setEmoji('📊')
   );
 
-  return { embed, components: [row] };
+  return {
+    embeds: [embed1, embed2, embed3, embed4, embed5],
+    components: [row]
+  };
 }
 
 module.exports = {
@@ -403,6 +434,6 @@ module.exports = {
   createGetStartedEmbed,
   createFaqEmbed,
   createBinanceGuideEmbeds,
-  createAccountGuideEmbed
+  createAccountGuideEmbeds
 };
 

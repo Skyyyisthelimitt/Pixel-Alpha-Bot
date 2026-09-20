@@ -1,7 +1,7 @@
 const { Client, GatewayIntentBits, Partials, EmbedBuilder, PermissionFlagsBits, MessageFlags, ChannelType } = require('discord.js');
 require('dotenv').config();
 
-const { createOfficialLinksEmbed, createRolesEmbed, createRulesEmbed, createWelcomeEmbed, createGetStartedEmbed, createFaqEmbed, createBinanceGuideEmbeds, createAccountGuideEmbed } = require('./handlers/embedHandler');
+const { createOfficialLinksEmbed, createRolesEmbed, createRulesEmbed, createWelcomeEmbed, createGetStartedEmbed, createFaqEmbed, createBinanceGuideEmbeds, createAccountGuideEmbeds } = require('./handlers/embedHandler');
 const { handleRoleInteraction } = require('./handlers/roleHandler');
 const { registerCommands } = require('./deploy-commands');
 
@@ -285,25 +285,32 @@ client.on('interactionCreate', async (interaction) => {
     // 8. /post-account-guide
     if (commandName === 'post-account-guide') {
       const targetChannel = options.getChannel('channel') || channel;
-      const { embed, components } = createAccountGuideEmbed();
+      const { embeds, components } = createAccountGuideEmbeds();
 
-      console.log(`📨 Posting account guide to channel: ${targetChannel?.name || targetChannel?.id} (type: ${targetChannel?.type})`);
+      console.log(`📨 Posting account guide (${embeds.length} embeds) to channel: ${targetChannel?.name || targetChannel?.id} (type: ${targetChannel?.type})`);
 
       try {
         if (targetChannel.type === ChannelType.GuildForum) {
-          await targetChannel.threads.create({
+          const thread = await targetChannel.threads.create({
             name: 'How to Create Your Pixel Alpha Account',
-            message: { embeds: [embed], components }
+            message: { embeds: [embeds[0]] }
           });
-          const replyText = `✅ Account creation guide created as a new post in ${targetChannel}!`;
+          for (let i = 1; i < embeds.length; i++) {
+            const isLast = i === embeds.length - 1;
+            await thread.send({ embeds: [embeds[i]], components: isLast ? components : [] });
+          }
+          const replyText = `✅ Account creation guide created as a new post in ${targetChannel}! (${embeds.length} embeds)`;
           return interaction.deferred ? interaction.editReply({ content: replyText }) : interaction.reply({ content: replyText, flags: MessageFlags.Ephemeral });
         }
 
-        await targetChannel.send({ embeds: [embed], components });
-        const replyText = `✅ Account creation guide posted in ${targetChannel}!`;
+        for (let i = 0; i < embeds.length; i++) {
+          const isLast = i === embeds.length - 1;
+          await targetChannel.send({ embeds: [embeds[i]], components: isLast ? components : [] });
+        }
+        const replyText = `✅ Account creation guide posted in ${targetChannel}! (${embeds.length} embeds)`;
         return interaction.deferred ? interaction.editReply({ content: replyText }) : interaction.reply({ content: replyText, flags: MessageFlags.Ephemeral });
       } catch (err) {
-        console.error('❌ Error sending account guide embed:', err);
+        console.error('❌ Error sending account guide embeds:', err);
         const replyText = `❌ Failed to post account guide in ${targetChannel}. Check bot permissions: ${err.message}`;
         return interaction.deferred ? interaction.editReply({ content: replyText }) : interaction.reply({ content: replyText, flags: MessageFlags.Ephemeral });
       }
