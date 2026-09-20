@@ -112,7 +112,15 @@ client.on('interactionCreate', async (interaction) => {
 
     // Defer reply immediately for post commands to avoid 3-second Discord timeouts
     if (commandName.startsWith('post-')) {
-      await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+      try {
+        if (!interaction.deferred && !interaction.replied) {
+          await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+        }
+      } catch (deferErr) {
+        if (deferErr.code !== 40060 && deferErr.code !== 10062) {
+          console.error('⚠️ Warning: deferReply failed:', deferErr.message);
+        }
+      }
     }
 
     // 1. /post-links
@@ -279,26 +287,25 @@ client.on('interactionCreate', async (interaction) => {
       const targetChannel = options.getChannel('channel') || channel;
       const { embed, components } = createAccountGuideEmbed();
 
+      console.log(`📨 Posting account guide to channel: ${targetChannel?.name || targetChannel?.id} (type: ${targetChannel?.type})`);
+
       try {
         if (targetChannel.type === ChannelType.GuildForum) {
           await targetChannel.threads.create({
             name: 'How to Create Your Pixel Alpha Account',
             message: { embeds: [embed], components }
           });
-          return interaction.editReply({
-            content: `✅ Account creation guide created as a new post in ${targetChannel}!`
-          });
+          const replyText = `✅ Account creation guide created as a new post in ${targetChannel}!`;
+          return interaction.deferred ? interaction.editReply({ content: replyText }) : interaction.reply({ content: replyText, flags: MessageFlags.Ephemeral });
         }
 
         await targetChannel.send({ embeds: [embed], components });
-        return interaction.editReply({
-          content: `✅ Account creation guide posted in ${targetChannel}!`
-        });
+        const replyText = `✅ Account creation guide posted in ${targetChannel}!`;
+        return interaction.deferred ? interaction.editReply({ content: replyText }) : interaction.reply({ content: replyText, flags: MessageFlags.Ephemeral });
       } catch (err) {
-        console.error(err);
-        return interaction.editReply({
-          content: `❌ Failed to post account guide in ${targetChannel}. Check bot permissions.`
-        });
+        console.error('❌ Error sending account guide embed:', err);
+        const replyText = `❌ Failed to post account guide in ${targetChannel}. Check bot permissions: ${err.message}`;
+        return interaction.deferred ? interaction.editReply({ content: replyText }) : interaction.reply({ content: replyText, flags: MessageFlags.Ephemeral });
       }
     }
 
