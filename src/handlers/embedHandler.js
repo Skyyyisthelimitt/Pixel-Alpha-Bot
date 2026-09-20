@@ -328,6 +328,73 @@ function createBinanceGuideEmbeds() {
   return [embed1, embed2, embed3, embed4, embed5, embed6, embed7];
 }
 
+/**
+ * Builds the Account Creation Guide Embed and Action Row
+ */
+function createAccountGuideEmbed() {
+  const COLOR = '#F5B81C';
+  const FOOTER = 'Pixel Alpha — Automated Trading Intelligence';
+
+  const embed = new EmbedBuilder()
+    .setTitle('How to Create Your Pixel Alpha Account')
+    .setColor(COLOR)
+    .setDescription(
+      'Pixel Alpha operates on a non-custodial model. You trade on your own exchange account, keep full custody of your capital, and pay only on net profits. Setting up your account takes less than two minutes.'
+    )
+    .addFields(
+      {
+        name: 'Before You Start',
+        value:
+          '• **No payment details required**: No credit card or upfront subscription needed.\n' +
+          '• **Performance-based fee**: Free to connect. A 20% fee applies only to realized profits above your High-Water Mark ($0 on flat or losing periods).\n' +
+          '• **Non-custodial**: Connected via trade-only API keys. We never have permission to withdraw, transfer, or hold funds.',
+        inline: false
+      },
+      {
+        name: 'Step 1 · Go to the Registration Page',
+        value: 'Visit [pixel-alpha.com/auth](https://pixel-alpha.com/auth). If the form shows "Sign In", click **Create one free** at the bottom.',
+        inline: false
+      },
+      {
+        name: 'Step 2 · Fill in Your Details',
+        value:
+          '• Enter your **Name** and a valid **Email Address**.\n' +
+          '• Choose a secure **Password** and confirm it.\n' +
+          '• Check the box to accept the **Terms & Conditions**, **Privacy Policy**, and **Risk Disclaimer**.',
+        inline: false
+      },
+      {
+        name: 'Step 3 · Access Your Dashboard',
+        value:
+          'Click **Create free account**. You will be authenticated immediately and redirected to your dashboard at [pixel-alpha.com/dashboard](https://pixel-alpha.com/dashboard).',
+        inline: false
+      },
+      {
+        name: 'Next Step · Connect Your Exchange',
+        value:
+          'Once your account is ready, follow our companion guide in this channel: **How to connect your Binance account** to set up your API key and server IP allow-list.\n\n' +
+          'Need assistance? Open a ticket in <#1545070643744215212> or contact **support@pixel-alpha.com**.',
+        inline: false
+      }
+    )
+    .setFooter({ text: FOOTER });
+
+  const row = new ActionRowBuilder().addComponents(
+    new ButtonBuilder()
+      .setLabel('Create Free Account')
+      .setStyle(ButtonStyle.Link)
+      .setURL('https://pixel-alpha.com/auth')
+      .setEmoji('🚀'),
+    new ButtonBuilder()
+      .setLabel('Go to Dashboard')
+      .setStyle(ButtonStyle.Link)
+      .setURL('https://pixel-alpha.com/dashboard')
+      .setEmoji('📊')
+  );
+
+  return { embed, components: [row] };
+}
+
 module.exports = {
   createOfficialLinksEmbed,
   createRolesEmbed,
@@ -335,5 +402,7 @@ module.exports = {
   createWelcomeEmbed,
   createGetStartedEmbed,
   createFaqEmbed,
-  createBinanceGuideEmbeds
+  createBinanceGuideEmbeds,
+  createAccountGuideEmbed
 };
+

@@ -109,6 +109,17 @@ const commands = [
         .setRequired(false)
     ),
 
+  // 8. Post Account Creation Guide
+  new SlashCommandBuilder()
+    .setName('post-account-guide')
+    .setDescription('Posts the Pixel Alpha account creation guide')
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+    .addChannelOption(option =>
+      option.setName('channel')
+        .setDescription('Channel to post in (defaults to current channel)')
+        .setRequired(false)
+    ),
+
   // 8. Broker Setup Guide Quick Command
   new SlashCommandBuilder()
     .setName('broker')

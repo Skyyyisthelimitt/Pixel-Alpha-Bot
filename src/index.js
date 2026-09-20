@@ -1,7 +1,7 @@
 const { Client, GatewayIntentBits, Partials, EmbedBuilder, PermissionFlagsBits, MessageFlags, ChannelType } = require('discord.js');
 require('dotenv').config();
 
-const { createOfficialLinksEmbed, createRolesEmbed, createRulesEmbed, createWelcomeEmbed, createGetStartedEmbed, createFaqEmbed, createBinanceGuideEmbeds } = require('./handlers/embedHandler');
+const { createOfficialLinksEmbed, createRolesEmbed, createRulesEmbed, createWelcomeEmbed, createGetStartedEmbed, createFaqEmbed, createBinanceGuideEmbeds, createAccountGuideEmbed } = require('./handlers/embedHandler');
 const { handleRoleInteraction } = require('./handlers/roleHandler');
 const { registerCommands } = require('./deploy-commands');
 
@@ -270,6 +270,34 @@ client.on('interactionCreate', async (interaction) => {
         console.error(err);
         return interaction.editReply({
           content: `❌ Failed to post guide in ${targetChannel}. Check bot permissions.`
+        });
+      }
+    }
+
+    // 8. /post-account-guide
+    if (commandName === 'post-account-guide') {
+      const targetChannel = options.getChannel('channel') || channel;
+      const { embed, components } = createAccountGuideEmbed();
+
+      try {
+        if (targetChannel.type === ChannelType.GuildForum) {
+          await targetChannel.threads.create({
+            name: 'How to Create Your Pixel Alpha Account',
+            message: { embeds: [embed], components }
+          });
+          return interaction.editReply({
+            content: `✅ Account creation guide created as a new post in ${targetChannel}!`
+          });
+        }
+
+        await targetChannel.send({ embeds: [embed], components });
+        return interaction.editReply({
+          content: `✅ Account creation guide posted in ${targetChannel}!`
+        });
+      } catch (err) {
+        console.error(err);
+        return interaction.editReply({
+          content: `❌ Failed to post account guide in ${targetChannel}. Check bot permissions.`
         });
       }
     }
