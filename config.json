@@ -1,0 +1,234 @@
+{
+  "embeds": {
+    "officialLinks": {
+      "title": "Pixel Alpha — Official Links",
+      "color": "#F5B81C",
+      "bannerUrl": "",
+      "fields": [
+        {
+          "name": "Official Website",
+          "value": "https://pixel-alpha.com/",
+          "inline": false
+        },
+        {
+          "name": "Official X (Twitter)",
+          "value": "https://x.com/thepixelalpha",
+          "inline": false
+        },
+        {
+          "name": "Binance Setup Documentation",
+          "value": "https://pixel-alpha.com/docs/binance",
+          "inline": false
+        },
+        {
+          "name": "Connect Exchange Dashboard",
+          "value": "https://pixel-alpha.com/dashboard/exchanges/connect",
+          "inline": false
+        },
+        {
+          "name": "Support Email",
+          "value": "support@pixel-alpha.com",
+          "inline": false
+        }
+      ],
+      "footer": "Pixel Official Security System"
+    },
+    "reactionRoles": {
+      "title": "Pick your roles:",
+      "description": "In order to keep pings from this server to the most optimal level you can choose roles for everything that you want to get notified on:",
+      "color": "#F5B81C",
+      "thumbnailUrl": "",
+      "roles": [
+        {
+          "customId": "role_news",
+          "label": "News",
+          "emoji": "📰",
+          "roleName": "News",
+          "description": "Market news & server updates"
+        },
+        {
+          "customId": "role_alerts",
+          "label": "Alerts",
+          "emoji": "📈",
+          "roleName": "Alerts",
+          "description": "Automated trading signal alerts"
+        },
+        {
+          "customId": "role_binance",
+          "label": "Binance",
+          "emoji": "🟡",
+          "roleName": "Binance",
+          "description": "Binance API & exchange updates"
+        }
+      ],
+      "footer": "Click a button below to toggle your roles. Click again to remove!"
+    },
+    "rules": {
+      "title": "⛔ Rules",
+      "description": "Let's create a safe and welcoming space guided by the following rules, non-compliance will result in an immediate ban or timeout from this server:",
+      "color": "#F5B81C",
+      "bannerUrl": "",
+      "fields": [
+        {
+          "name": "1. Be respectful",
+          "value": "Trash talking, toxicity, harassment, and any form of bullying will not be tolerated. Maintain discussions relevant to channel topics.",
+          "inline": false
+        },
+        {
+          "name": "2. No spam",
+          "value": "Avoid any misuse of @ notifications (@everyone / @here) to gain attention. Spamming messages or repetitive text is strictly prohibited.",
+          "inline": false
+        },
+        {
+          "name": "3. No self-promotion",
+          "value": "Do not use this server to excessively self-promote by shilling tweets, sending irrelevant external links, or advertising. This includes linking to other discord servers.",
+          "inline": false
+        },
+        {
+          "name": "4. No to scam & phishing",
+          "value": "Any promotion of illegal activities, sending phishing links, or fake giveaways will result in an immediate permanent ban.",
+          "inline": false
+        },
+        {
+          "name": "5. API & Account Security",
+          "value": "Never share your API secret keys, passwords, or broker credentials. Pixel team members will NEVER DM you first or ask for credentials.",
+          "inline": false
+        },
+        {
+          "name": "6. Non-Custodial & Financial Disclaimer",
+          "value": "Pixel provides market research and REST API signal execution. We do not manage member funds or offer financial advice (NFA / DYOR).",
+          "inline": false
+        },
+        {
+          "name": "7. Respect Discord TOS",
+          "value": "All members must abide by the official Discord Terms of Service and Community Guidelines.",
+          "inline": false
+        }
+      ],
+      "footer": "Pixel Community Security Standard"
+    },
+    "welcome": {
+      "title": "Welcome to Pixel Alpha! 👋",
+      "description": "We're excited to have you join our community. Here's everything you need to get started:",
+      "color": "#F5B81C",
+      "bannerUrl": "",
+      "fields": [
+        {
+          "name": "Verify First",
+          "value": "Head over to <#1545534630701043733> to complete CAPTCHA verification and unlock full community channels.",
+          "inline": false
+        },
+        {
+          "name": "Community Rules",
+          "value": "Check out <#1545060051650084864> before chatting to ensure a safe and clean space for everyone.",
+          "inline": false
+        },
+        {
+          "name": "Get Your Roles",
+          "value": "Head over to <#1545060511283023933> to pick notification roles that match your interests (News, Alerts, Bybit, Pixel Users).",
+          "inline": false
+        },
+        {
+          "name": "Official Links",
+          "value": "Visit <#1545063934137081856> for verified Pixel websites, Twitter/X, and official portals.",
+          "inline": false
+        },
+        {
+          "name": "Announcements & Updates",
+          "value": "Follow <#1545055915768807518> to stay updated with the latest news, signal drops & events.",
+          "inline": false
+        },
+        {
+          "name": "FAQ & Support",
+          "value": "Read <#1545064122784292915> for answers to common questions or open a ticket in <#1545070643744215212> if you need assistance.",
+          "inline": false
+        }
+      ],
+      "proTip": "⚡ **Pro Tip**: Make sure you've set your notifications so you don't miss special drops and market alerts!\n\n*Welcome aboard — trade smart, stay disciplined, and let the edge compound. 📈*",
+      "footer": "Pixel Community Welcome Guide"
+    },
+    "getStarted": {
+      "title": "🚀 Getting Started with Pixel Alpha",
+      "description": "From a standing start, connecting takes about ten minutes, most of which is the exchange’s own security prompts.\n\n• **Create a free Pixel Alpha account** — no card, no payment details, nothing to cancel.\n• **Open your exchange API management** — create a key with Futures trading enabled and withdrawals disabled.\n• **Allow-list our server IP** — ensure trades execute with zero interruption.\n• **Paste key & secret** — connect your exchange on the dashboard.\n• **Transfer USDT** — keep at least 1,000 USDT in your USD-M Futures wallet.\n\n*That is the end of your involvement. The next signal trades your account automatically!*",
+      "color": "#F5B81C",
+      "bannerUrl": "",
+      "websiteUrl": "https://pixel-alpha.com/dashboard/exchanges/connect",
+      "docsUrl": "https://pixel-alpha.com/docs/binance",
+      "buttonLabel": "Connect Binance on Dashboard",
+      "fields": [
+        {
+          "name": "01. Account & Capital Requirement",
+          "value": "• Register your free account on [pixel-alpha.com](https://pixel-alpha.com/auth).\n• You need a verified Binance account with USD-M Futures enabled.\n• Minimum **1,000 USDT** deposited in your **USD-M Futures wallet** (funds in Spot wallet cannot be traded and will not be seen).",
+          "inline": false
+        },
+        {
+          "name": "02. Create API Key on Binance",
+          "value": "Go to Binance > [API Management](https://www.binance.com/en/my/settings/api-management) > **Create API**.\n• Signature Type: **System generated (HMAC)** only. *(Ed25519 and RSA keys cannot be used)*.\n• Label it: `Pixel Alpha`.",
+          "inline": false
+        },
+        {
+          "name": "03. Set Permissions (Non-Custodial)",
+          "value": "• ✅ Check **Enable Futures** (required to open and close positions).\n• ❌ Leave **Enable Withdrawals** switched **OFF** (we never hold or move your funds).\n• *You keep 100% custody at all times and can revoke the key instantly.*",
+          "inline": false
+        },
+        {
+          "name": "04. Allow-list Server IP (Crucial Step)",
+          "value": "Tick *Restrict access to trusted IPs only* and add our server IP:\n`2.24.139.176`\n*(⚠️ Missing this causes Binance to silently reject trade requests while your account looks connected).* ",
+          "inline": false
+        },
+        {
+          "name": "05. Connect & Activate on Dashboard",
+          "value": "Paste your API Key & Secret into the [Pixel Alpha Dashboard](https://pixel-alpha.com/dashboard/exchanges/connect). Click **Connect** — your setup is complete!\n\n💡 *Want to watch first? You can also connect a Binance testnet key and let the bot run on play money.*",
+          "inline": false
+        }
+      ],
+      "footer": "Pixel Alpha Non-Custodial Trading Technology"
+    },
+    "faq": {
+      "title": "❓ Pixel Alpha — Frequently Asked Questions",
+      "description": "Everything you need to know about our automated trading bot, non-custodial security, pricing, and performance:",
+      "color": "#F5B81C",
+      "bannerUrl": "",
+      "websiteUrl": "https://pixel-alpha.com/faq",
+      "buttonLabel": "Read Full FAQ on Website",
+      "fields": [
+        {
+          "name": "01. What is Pixel Alpha?",
+          "value": "Pixel Alpha is an automated crypto futures trading bot that runs on your own exchange. Our systematic strategy sends signals, and orders execute in your account in seconds — whether you are at your screen or asleep.",
+          "inline": false
+        },
+        {
+          "name": "02. Do you have access to my funds?",
+          "value": "**Never.** Your funds remain in your Binance account in your own name. The API key carries **trading permission only** and cannot withdraw, transfer, or convert funds. You can revoke the key anytime.",
+          "inline": false
+        },
+        {
+          "name": "03. How much does it cost? (Pricing)",
+          "value": "**100% Free to use.** No upfront cost, no subscription, and no charge during flat or losing periods. We only charge a **20% performance fee on realized profit**, invoiced monthly above your **High-Water Mark**.",
+          "inline": false
+        },
+        {
+          "name": "04. What are the account requirements?",
+          "value": "• A verified **Binance** account with USD-M Futures.\n• At least **1,000 USDT** deposited in your USD-M Futures wallet.\n• Trade-only HMAC API key with server IP `2.24.139.176` allow-listed.",
+          "inline": false
+        },
+        {
+          "name": "05. Which exchanges are supported?",
+          "value": "• **Binance USD-M Futures** (Live today)\n• **Bybit** (Coming soon)\n• **MEXC** (Coming soon)\n*(We do not support CFDs or equity brokers).* ",
+          "inline": false
+        },
+        {
+          "name": "06. How does risk management work?",
+          "value": "• **Proportional Sizing:** Position size scales with your account balance.\n• **Position Caps:** Maximum exposure limits prevent over-allocation.\n• **Automatic Exits:** Strict rule-based closures, retried automatically if exchange lags.",
+          "inline": false
+        },
+        {
+          "name": "07. Where can I get support?",
+          "value": "Open a ticket in <#1545070643744215212> or email us directly at **support@pixel-alpha.com**.",
+          "inline": false
+        }
+      ],
+      "footer": "Pixel Alpha | Operated by Feature Digital LTD"
+    }
+  }
+}
