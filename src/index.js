@@ -74,7 +74,8 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
           .setDescription(
             `<@${newMember.id}> has been verified and is now a member of Pixel Alpha.\n\n` +
             `**Get started:**\n` +
-            `· [Create your Pixel Alpha account](https://pixel-alpha.com) to activate automated trading.\n` +
+            `· [Create your Pixel Alpha account](https://pixel-alpha.com/auth) to activate automated trading.\n` +
+            `· To unlock full automated signals, sign up on our [website](https://pixel-alpha.com/auth) and drop your email or profile screenshot in <#1551222613714403378>.\n` +
             `· For the full setup guide, head to <#1550341300010618940>.\n` +
             `· Verify official links and socials in <#1545063934137081856>.`
           )
